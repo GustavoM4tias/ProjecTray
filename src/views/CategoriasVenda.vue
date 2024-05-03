@@ -4,9 +4,9 @@
   <div
     class="container d-flex justify-content-center align-items-center vh-100 flex-column"
   >
-    <div class="col-md-8 col-sm-12 align-items-center">
-      <h2 class="text-center">Quais categorias você se identifica?</h2>
-      <div class="card p-4">
+    <div class="d-flex align-items-center justify-content-center">
+      <div class="card p-4" style="font-size: 20px;">
+      <p class="text-center" style="font-size: larger;"><strong>Quais categorias você se identifica?</strong></p>
         <div class="row">
           <div class="col-md-6">
             <div class="form-check">

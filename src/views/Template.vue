@@ -55,14 +55,5 @@
         </div>
       </div>
     </div>
-
-    <div class="container text-center mt-3">
-      <a class="setas" href="tela6.html"
-        ><span style="font-size: 24px">◄</span></a
-      >
-      <a class="setas" href="tela8.html"
-        ><span style="font-size: 24px">►</span></a
-      >
-    </div>
   </div>
 </template>

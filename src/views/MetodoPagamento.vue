@@ -4,8 +4,8 @@
   <div
     class="container d-flex justify-content-center align-items-center vh-100 flex-column"
   >
-    <div class="highlight-container">
-      <h2 class="text-center">Qual método de pagamento pretende utilizar?</h2>
+    <div class="card p-5" style="font-size: 20px;">
+      <p class="text-center" style="font-size: larger;"><strong>Qual método de pagamento pretende utilizar?</strong></p>
       <div class="row">
         <div class="col-md-6">
           <div class="form-check">
@@ -31,10 +31,10 @@
               class="form-check-input"
               type="checkbox"
               value=""
-              id="categoria2"
+              id="categoria3"
             />
-            <label class="form-check-label" for="categoria3">
-              Cartao de Crédito/Débito
+            <label class="form-check-label" for="categoria4">
+              Cartão 
             </label>
           </div>
         </div>
@@ -72,15 +72,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="container text-center mt-3">
-      <a class="setas" href="tela5.html"
-        ><span style="font-size: 24px">◄</span></a
-      >
-      <a class="setas" href="tela7.html"
-        ><span style="font-size: 24px">►</span></a
-      >
     </div>
   </div>
 </template>

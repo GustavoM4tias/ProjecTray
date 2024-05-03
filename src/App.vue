@@ -39,7 +39,7 @@
             <li class="nav-item">
               <a class="nav-link links-menu" href="#">
                 <router-link class="links-menu" to="/perfil"
-                  ><i class="bi bi-person"></i> Perfil</router-link
+                  ><i class="bi bi-person-circle"></i> Perfil</router-link
                 ></a
               >
             </li>
@@ -165,21 +165,24 @@
 
 .links-menu {
   font-size: 16px;
-  transition: 0.3s;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.links-menu:hover {
-  font-size: 18px;
-  transition: 0.3s;
-  & .bi {
-    font-size: 33px;
-  }
-}
-
 router-link {
   text-decoration: none;
+}
+
+.nav-item {
+  transition: 0.3s;
+}
+
+.nav-item:hover {
+  transform: scale(1.03);
+  transition: 0.3s;
+  & .links-menu {
+    color: white;
+  }
 }
 
 .footer {
