@@ -127,6 +127,7 @@
 </template>
 
 <style>
+
 .navbar {
   background-color: rgb(4, 42, 98);
   background: linear-gradient(
@@ -134,6 +135,8 @@
     rgba(4, 42, 98, 1) 25%,
     rgba(21, 11, 135, 1) 100%
   );
+  font-weight: bold;
+  height: 8vh;
 }
 
 .logo-header {
