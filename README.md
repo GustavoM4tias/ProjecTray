@@ -1,19 +1,4 @@
 # Projeto Tray - MEGEV
----
-## Universidade de Marília - Unimar
----
-## Nome e RA dos colaboradores do projeto:
-
->-**Edmar Augusto Martins - 1959465 - Líder**
-> 
->-**Erik Delanda Zaros - 1959937**
-> 
->-**Gustavo Henrique Matias Diniz - 1977490**
-> 
->-**Mário Henrique Rabelo Dias - 1971824**
-> 
->-**Victor Gabriel de Lima Peres - 1969980**
----
 
 ## Objetivo do projeto
 >-**Esse projeto tem como objetivo apresentar um tutorial para o usuário iniciar sua loja de forma rápida e prática, após a iniciação de sua loja uma tela para upload de um arquivo CSV com intuito de cadastrar os produtos em massa.**
@@ -120,4 +105,20 @@
 >-**Print da tela**:
 >
 >![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/c0c4372e-a0d2-4d4e-9c16-024b2e3d95a9)
+---
+
+---
+## Universidade de Marília - Unimar
+---
+## Nome e RA dos colaboradores do projeto:
+
+>-**Edmar Augusto Martins - 1959465 - Líder**
+> 
+>-**Erik Delanda Zaros - 1959937**
+> 
+>-**Gustavo Henrique Matias Diniz - 1977490**
+> 
+>-**Mário Henrique Rabelo Dias - 1971824**
+> 
+>-**Victor Gabriel de Lima Peres - 1969980**
 ---
