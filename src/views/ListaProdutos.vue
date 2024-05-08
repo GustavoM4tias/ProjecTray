@@ -3,8 +3,8 @@ import CardProdutos from "../components/CardProdutos.vue";
 </script>
 
 <template>
-  <div class="lista-produtos container-fluid bg-secondary d-flex justify-content-center align-items-center flex-column">
-    <div class="row bg-primary col-lg-11 col-md-12">
+  <div class="lista-produtos container-fluid d-flex justify-content-center align-items-center flex-column">
+    <div class="row col-lg-11 col-md-12">
       <h4 class="text-center mt-3">Lista de Produtos da sua loja</h4>
       <CardProdutos :exibirBotoes="true" /> 
       <CardProdutos :exibirBotoes="true" />  <!-- false = exclui botões -->
