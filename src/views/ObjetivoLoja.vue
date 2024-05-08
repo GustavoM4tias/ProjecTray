@@ -2,9 +2,7 @@
 </script>
 
 <template>
-  <div
-    class="container d-flex justify-content-center align-items-center vh-100 flex-column"
-  >
+  <div class="container d-flex justify-content-center align-items-center vh-100 flex-column">
     <div class="card p-4 col-md-8 col-sm-10">
       <div class="highlight-container">
         <h2 class="text-center">Qual seu objetivo como loja virtual?</h2>
