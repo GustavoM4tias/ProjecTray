@@ -10,8 +10,8 @@
           <p class="text-start small"><strong>Preço: </strong> 19,99 </p>
         </div>
         <div class="row botões justify-content-center" v-if="exibirBotoes">
-          <button class="btn col-3 btn-danger m-1">Excluir</button>
-          <button class="btn col-3 btn-primary m-1">Editar</button>
+          <button class="btn col-auto btn-danger m-1">Excluir</button>
+          <button class="btn col-auto btn-primary m-1">Editar</button>
         </div>
       </div>
     </div>

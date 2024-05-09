@@ -136,7 +136,6 @@
     rgba(21, 11, 135, 1) 100%
   );
   font-weight: bold;
-  height: 8vh;
 }
 
 .logo-header {

@@ -29,7 +29,7 @@
       <div class="card-body">
         <form id="stepForm">
 
-          <div class="step active" id="step1">
+          <div class="step" id="step1">
             <h3 class="text-center">Perfil Pessoal</h3>
             <div class="row m-auto">
               <div class="col-6">
@@ -70,13 +70,25 @@
           </div>
 
 
-          <div class="step" id="step2">
+          <div class="step active" id="step2">
 
             <div class="mb-2">
               <label for="nomeLoja">Nome da sua loja virtual:</label>
               <input type="text" id="nomeLoja" class="form-control" placeholder="Nome da Loja" />
             </div>
-            <div>
+
+
+            <div class="mb-2">
+              <label for="nomeLoja">Nome da sua loja virtual:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Url do site" />
+              <span class="input-group-text">@tray.com.br</span>
+            </div>
+          </div>
+            
+            
+
+            <div class="mb-2">
               <label>Objetivo:</label>
               <select class="form-select form-control">
                 <option value="none" selected>Qual seu objetivo como loja virtual?</option>
@@ -87,9 +99,9 @@
               </select>
             </div>
 
-            <div class="form-group mt-3">
-              <label for="categorySelect">Categorias de Venda:</label>
-              <select class="form-control" id="categorySelect">
+            <div class="form-group">
+              <label for="categoriaVenda">Categorias de Venda:</label>
+              <select class="form-control" id="categoriaVenda">
                 <option value="">Selecionar Categoria</option>
                 <option value="Eletrodomésticos">Eletrodomésticos</option>
                 <option value="Nutrição">Nutrição</option>
@@ -98,7 +110,7 @@
                 <option value="Beleza e Cuidados Pessoais">Cuidados Pessoais</option>
                 <option value="Livros e Mídia">Livros e Mídia</option>
                 <option value="Casa e Jardim">Casa e Jardim</option>
-                <option value="Esportes e Lazer">Esportes e Lazer</option>
+                <option value="Esportes e Lazer">Esportes</option>
                 <option value="Automotivo">Automotivo</option>
                 <option value="Brinquedos e Jogos">Brinquedos</option>
                 <option value="Alimentos e Bebidas">Alimentos</option>
@@ -107,7 +119,7 @@
             </div>
 
             <div class="selected-items">
-              <div id="selectedItems" class="d-flex row p-1 pl-3 pr-3 bg-primary">
+              <div id="selectedItems" class="d-flex row px-3 py-1">
                 <!-- Categorias aparecem aqui -->
               </div>
             </div>
@@ -119,17 +131,32 @@
 
           <div class="step" id="step3">
 
+            <div class="form-group">
+              <label for="categoriaPagamento">Metodos de Pagamento:</label>
+              <select class="form-control" id="categoriaPagamento">
+                <option value="">Vindi</option>
+                <option value="Eletrodomésticos">PayPal</option>
+                <option value="Nutrição">Mercado Pago</option>
+                <option value="Eletrônicos">Pix</option>
+                <option value="Eletrônicos">Cartao</option>
+                <option value="Eletrônicos">Boleto</option>
+              </select>
+            </div>
+
+            
+
+            <button class="btn btn-secondary prev mr-2 m-1 mt-3" type="button">Anterior</button>
+            <button class="btn btn-primary next m-1 mt-3" type="button">Enviar</button>
+          </div>
+
+          <div class="step" id="step4">
+
             <div class="row">
-              <div class="col">
-                <input class="form-control m-2" type="file">
-              </div>
-              <div class="col-auto">
-                <button class="btn btn-success m-2">Enviar</button>
-              </div>
+              <h1>teste</h1>
             </div>
 
             <button class="btn btn-secondary prev mr-2 m-1 mt-3" type="button">Anterior</button>
-            <button class="btn btn-success m-1 mt-3" type="button">Enviar</button>
+            <button class="btn btn-success  m-1 mt-3" type="button">Enviar</button>
           </div>
 
         </form>
@@ -155,10 +182,19 @@
     });
 
     // Script categorias
-    $('#categorySelect').change(function () {
+    $('#categoriaVenda').change(function () {
       var selectedItem = $(this).val();
       if (selectedItem !== "") {
-        $('#selectedItems').append('<p class="bg-secondary col-auto rounded-pill m-2 p-2 pl-3 pr-2 text-light">' + selectedItem + '<i class="bi bi-x"></i></p>');
+        $('#selectedItems').append('<p class="bg-secondary col-auto rounded-pill m-1 my-2 px-2 py-1 text-light">' + selectedItem + '   <i class="bi bi-x"></i></p>');
+        $(this).val("");
+      }
+    });
+
+    // Script pagamento
+    $('#categoriaPagamento').change(function () {
+      var selectedItem = $(this).val();
+      if (selectedItem !== "") {
+        $('#selectedItems').append('<p class="bg-secondary col-auto rounded-pill m-1 my-2 px-2 py-1 text-light">' + selectedItem + '   <i class="bi bi-x"></i></p>');
         $(this).val("");
       }
     });

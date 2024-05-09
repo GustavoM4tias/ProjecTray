@@ -28,6 +28,7 @@
 </template>
 
 <script setup>
+
 const produtos = [
   {
       "nome": "Molecule Man",
