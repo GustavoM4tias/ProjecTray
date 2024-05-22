@@ -13,7 +13,6 @@ import CardProdutos from "../components/CardProdutos.vue";
   </div>
 </template>
 
-
 <style scoped>
 .lista-produtos {
   margin-top: 8vh;
