@@ -53,9 +53,8 @@
             </li>
             <li class="nav-item">
               <a class="nav-link links-menu" href="#">
-                <router-link class="links-menu" to="/objetivo"
-                  ><i class="bi bi-graph-up-arrow"></i> Objetivo da
-                  Loja</router-link
+                <router-link class="links-menu" to="/configuracoes"
+                  ><i class="bi bi-gear"></i> Configuraçoes da Loja</router-link
                 ></a
               >
             </li>
@@ -81,29 +80,7 @@
                   Produtos</router-link
                 >
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link links-menu" href="#"
-                ><router-link class="links-menu" to="/categoria"
-                  ><i class="bi bi-bookmark-check"></i> Categorias de
-                  Venda</router-link
-                ></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link links-menu" href="#"
-                ><router-link class="links-menu" to="/metodo-pagamento"
-                  ><i class="bi bi-wallet"></i> Método de Pagamento</router-link
-                ></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link links-menu" href="#"
-                ><router-link class="links-menu" to="/metodo-entrega"
-                  ><i class="bi bi-truck"></i> Método de Entrega</router-link
-                >
-              </a>
-            </li>
+            </li> 
             <li class="nav-item">
               <a class="nav-link links-menu" href="#">
                 <router-link class="links-menu"   to="/template"

@@ -1,13 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MenuInicial from '../views/MenuInicial.vue'
 import Perfil from '../views/Perfil.vue'
-import ObjetivoLoja from '../views/ObjetivoLoja.vue'
+import ConfiguracoesLoja from '../views/ConfiguracoesLoja.vue'
 import ListaProdutos from '../views/ListaProdutos.vue'
 import AdicionarProdutos from '../views/AdicionarProdutos.vue'
 import ImportarProdutos from '../views/ImportarProdutos.vue'
-import CategoriasVenda from '../views/CategoriasVenda.vue'
-import MetodoPagamento from '../views/MetodoPagamento.vue'
-import MetodoEntrega from '../views/MetodoEntrega.vue'
 import Template from '../views/Template.vue'
 
 const router = createRouter({
@@ -24,9 +21,9 @@ const router = createRouter({
       component: Perfil
     },
     {
-      path: '/objetivo',
-      name: 'objetivo',
-      component: ObjetivoLoja
+      path: '/configuracoes',
+      name: 'configuracoes',
+      component: ConfiguracoesLoja
     }, 
     {
       path: '/lista',
@@ -42,22 +39,7 @@ const router = createRouter({
       path: '/importar',
       name: 'importar',
       component: ImportarProdutos
-    },
-    {
-      path: '/categoria',
-      name: 'categoria',
-      component: CategoriasVenda
-    },
-    {
-      path: '/metodo-pagamento',
-      name: 'metodo-pagamento',
-      component: MetodoPagamento
-    },
-    {
-      path: '/metodo-entrega',
-      name: 'metodo-entrega',
-      component: MetodoEntrega
-    },
+    }, 
     {
       path: '/template',
       name: 'template',
