@@ -5,31 +5,33 @@
 
 ## Tela 01
 
->-**Arquivo**: tutorial/tela1.html
+>-**Arquivo**: index.html
 > 
->-**Essa tela é para o usuário cadastrar o seu nome.**
+>-**Essa tela é para o usuário do sistema cadastras o seus dados para criação do perfil.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/e7b95c60-3247-4b59-8b54-aafab4cab731)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/70cc6502-8a71-47bb-9528-8525b0373c3e)
+
 ---
 
 ## Tela 02
 
->-**Arquivo**: tutorial/tela2.html
+>-**Arquivo**: index.html
 > 
->-**Essa tela é para o usuário cadastrar o nome de sua loja virtual.**
+>-**Essa tela é para o usuário do sistema cadastrar as informações básicas de sua loja.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/47a2e61f-c222-48cb-90c2-d6dd8102f1a6)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/50bb2135-d424-464f-bdba-2cd63d2a95f9)
+
 ---
 
 ## Tela 03
 
->-**Arquivo**: tutorial/tela3.html
+>-**Arquivo**: index.html
 > 
->-**Essa tela é para o usuário escolher qual o objetivo dele como loja virtual.**
+>-**Essa tela é para o usuário do sistema vincular os métodos de pagamento e entrega para sua loja virtual.**
 > 
 >-**Print da tela**:
 > 
