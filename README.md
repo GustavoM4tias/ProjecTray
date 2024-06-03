@@ -7,7 +7,7 @@
 
 >-**Arquivo**: index.html
 > 
->-**Essa tela é para o usuário do sistema cadastras o seus dados para criação do perfil.**
+>-**Nessa tela o usuário do sistema consegue cadastrar os dados para a criação do seu perfil.**
 > 
 >-**Print da tela**:
 > 
@@ -19,7 +19,7 @@
 
 >-**Arquivo**: index.html
 > 
->-**Essa tela é para o usuário do sistema cadastrar as informações básicas de sua loja.**
+>-**Nessa tela é possível o usuário do sistema cadastrar as informações básicas de sua nova loja virtual.**
 > 
 >-**Print da tela**:
 > 
@@ -31,82 +31,101 @@
 
 >-**Arquivo**: index.html
 > 
->-**Essa tela é para o usuário do sistema vincular os métodos de pagamento e entrega para sua loja virtual.**
+>-**Nessa tela é possível o usuário do sistema vincular os métodos de pagamento e entrega para sua loja virtual.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/f25f8f92-b8e6-4150-aadf-01f646af8eef)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/6495306b-6cad-426b-9d48-b6005c8cff7f)
 ---
 
 ## Tela 04
 
->-**Arquivo**: tutorial/tela4.html
+>-**Arquivo**: index.html
 > 
->-**Essa tela é para o usuário selecionar qual categoria de produtos ele comercializa ou vai comercializar.**
+>-**Nessa tela é possível o usuário selecionar o template que deseja aplicar em sua loja virtual.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/092f79e5-b709-48b3-971b-a4cae4d87195)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/e865f23d-8bab-4ead-b06c-0956017d8020)
 ---
 
 ## Tela 05
 
->-**Arquivo**: tutorial/tela5.html
+>-**Arquivo**: Perfil.vue
 > 
->-**Essa tela é para o usuário selecionar qual método de entrega prente utilizar na sua loja virtual.**
+>-**Nessa tela é possível o usuário do sistema editar dados do seu perfil.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/dfbf97c0-ed77-44ce-8b6d-78f6c072ea1b)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/2ee717b7-ca7c-433f-9cff-783ccd8fc050)
 ---
 
 ## Tela 06
 
->-**Arquivo**: tutorial/tela6.html
+>-**Arquivo**: MenuInicial.vue
 > 
->-**Essa tela é para o usuário selecionar qual método de pagamento deseja utilizar em sua loja virtual.**
+>-**Esse é o menu inicial da loja virtual.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/e8d79fa1-781d-4a2f-8335-daa2c240e425)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/0ea8f2f7-07a7-4ae2-b0c8-fda900cac43b)
 ---
 
 ## Tela 07
 
->-**Arquivo**: tutorial/tela7.html
+>-**Arquivo**: ConfiguracoesLoja.vue
 > 
->-**Essa tela é para o usuário escolher qual template deseja utilizar para sua loja virtual.**
+>-**Nessa tela é possível o usuário editar todos os dados básicos cadastrados no tutorial.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/09e3aeea-3ba5-4f00-b2d0-b507ce771e16)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/26f175cb-25e5-4d39-88d0-b2ad029d7612)
 ---
 
 ## Tela 08
 
->-**Arquivo**: tutorial/tela8.html
+>-**Arquivo**: ListaProdutos.vue
 > 
->-**Essa tela tem como objetivo o cadastro da primeira categoria e produto para sair do tutorial e iniciar a loja virtual.
->OBS: Nessa tela você consegue cadastrar e listrar os dados que foram cadastrados.**
+>-**Nessa tela é listado para o usuário do sistema todos os produtos cadastrados.
+> Observação: Nessa tela é possível editar ou excluir determinado produto.**
 > 
 >-**Prints das telas**:
 > 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/5225fa93-efbb-49de-a7e6-2828dca68dfa)
-> 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/7bffd8ab-69d8-4455-8145-a6dc26294266)
-> 
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/658d2d8f-06dc-4536-a21a-006888fdd7cf)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/c78bcdd8-1c4c-427e-aa9d-69a9c7a7c733)
 ---
 
 ## Tela 09
 
->-**Arquivo**: dashboard.html
+>-**Arquivo**: AdicionarProdutos.vue
 >
->-**Essa é a tela principal após a conclusão do tutorial, nela é possível alterar todos os dados cadastrados.**
+>-**Nessa tela é possível o usuário do sistema cadastrar os produtos para sua loja virtual.
+> Observação: Nessa tela é possível cadastrar somente um produto por vez.**
 >
 >-**Print da tela**:
 >
->![image](https://github.com/GustavoM4tias/ProjetoTray/assets/127625388/c0c4372e-a0d2-4d4e-9c16-024b2e3d95a9)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/95143646-d7ec-4b7b-bf19-1f51a5d29597)
+---
+
+## Tela 10
+
+>-**Arquivo**: ImportarProdutos.vue
+>
+>-**Nessa tela é possível o usuário do sistema cadastras os produtos em massa através de um arquivo CSV.**
+>
+>-**Print da tela**:
+>
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/cc64a7e6-618c-48a7-8b9b-c69df92bee48)
+---
+
+## Tela 11
+
+>-**Arquivo**: Template.vue
+>
+>-**Nessa tela é possível o usuário do sistema editar/escolher o template da sua loja virtual.**
+>
+>-**Print da tela**:
+>
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/22be53e1-e54c-455c-aa7b-ca157e4dc19d)
 ---
 
 ---
