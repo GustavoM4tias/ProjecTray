@@ -1,42 +1,92 @@
-<script setup>
-</script>
-
 <template>
   <div class="container-fluid d-flex justify-content-center align-items-center flex-column vh-100">
     <div class="card col-lg-4 col-md-6 col-sm-11 p-4 mt-5">
       <div class="mb-3">
-        <label for="nome" class="form-label">Referência</label>
-        <input type="text" class="form-control" id="nome" placeholder="Referência do Produto">
+        <label for="referencia" class="form-label">Referência</label>
+        <input type="text" class="form-control" id="referencia" v-model="produto.referencia" placeholder="Referência do Produto">
       </div>
       <div class="mb-3">
         <label for="descricao" class="form-label">Descrição</label>
-        <input type="text" class="form-control" id="descricao" placeholder="Descrição do Produto">
+        <input type="text" class="form-control" id="descricao" v-model="produto.descricao" placeholder="Descrição do Produto">
       </div>
       <div class="mb-3">
         <label for="categoria" class="form-label">Categoria do Produto</label>
-        <select class="form-select" id="categoria">
-          <option selected>Selecione uma categoria</option>
-          <option value="categoria1">Categoria 1</option>
-          <option value="categoria2">Categoria 2</option>
-          <option value="categoria3">Categoria 3</option>
+        <select class="form-select" id="categoria" v-model="produto.categoria">
+          <option selected disabled>Selecione uma categoria</option>
+          <option v-for="(categoria, index) in categorias" :key="index">{{ categoria.nome }}</option>
         </select>
       </div>
       <div class="mb-3">
         <label for="preco" class="form-label">Preço</label>
-        <input type="text" class="form-control" id="preco" placeholder="Preço do produto">
+        <input type="number" class="form-control" id="preco" v-model="produto.preco" placeholder="Preço do produto">
       </div>
       <div class="mb-3">
         <label for="status" class="form-label">Status do Produto</label>
-        <select class="form-select" id="status">
-          <option selected>Ativo</option>
-          <option value="inativo">Inativo</option>
+        <select class="form-select" id="status" v-model="produto.status">
+          <option :value="true">Ativo</option>
+          <option :value="false">Inativo</option>
         </select>
       </div>
       <div class="mb-3">
         <label for="imagem" class="form-label">Caminho da Imagem</label>
-        <input type="text" class="form-control" id="imagem" placeholder="URL da imagem do produto">
+        <input type="text" class="form-control" id="imagem" v-model="produto.image" placeholder="URL da imagem do produto">
       </div>
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="submit" class="btn btn-primary" @click="enviarProduto">Enviar</button>
     </div>
   </div>
 </template>
+
+<script>
+import CategoriaProdutoService from '../services/CategoriaProdutoService';
+import ProdutoService from '../services/ProdutoService';
+
+export default {
+  name: "AdicionarProduto",
+  data() {
+    return {
+      produto: {
+        referencia: '',
+        descricao: '',
+        categoria: '',
+        preco: 0,
+        status: true,
+        image: ''
+      },
+      categorias: []
+    };
+  },
+  methods: {
+    retrieveCategoria() {
+      CategoriaProdutoService.getAll()
+        .then(response => {
+          this.categorias = response.data;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    enviarProduto() {
+      ProdutoService.create(this.produto)
+        .then(response => {
+          console.log(response.data);
+          alert('Produto adicionado com sucesso!');
+          this.produto = {
+            referencia: '',
+            descricao: '',
+            categoria: '',
+            preco: 0,
+            status: true,
+            image: ''
+          }; // Limpar os campos depois de adicionar com sucesso
+        })
+        .catch(e => {
+          console.log(e);
+          alert('Ocorreu um erro ao adicionar o produto.');
+        });
+    }
+  },
+  mounted() {
+    this.retrieveCategoria();
+  }
+}
+</script>
