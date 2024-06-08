@@ -4,24 +4,49 @@
       <h4 class="text-center mt-3">Lista de Produtos da sua loja</h4>
       <CardProdutos v-for="produto in produtos" :key="produto.id" :produto="produto" :exibirBotoes="true" />
     </div>
+    <div class="pagination-controls">
+      <button @click="prevPage" :disabled="page === 1">Anterior</button>
+      <span>Página {{ page }} de {{ totalPages }}</span>
+      <button @click="nextPage" :disabled="page === totalPages">Próxima</button>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import ProdutoService from "../services/ProdutoService";
-import CardProdutos from "../components/CardProdutos.vue";
+import ProdutoPaginacaoService from '../services/ProdutoPaginacaoService';
+import CardProdutos from '../components/CardProdutos.vue';
 
 const produtos = ref([]);
+const page = ref(1);
+const limit = ref(10); // Limite de itens por página
+const totalPages = ref(1);
 
-onMounted(async () => {
+const fetchProdutos = async () => {
   try {
-    const response = await ProdutoService.getAll();
-    produtos.value = response.data;
+    const response = await ProdutoPaginacaoService.getAll(page.value, limit.value);
+    produtos.value = response.data.produtos;
+    totalPages.value = Math.ceil(response.data.total / limit.value);
   } catch (error) {
     console.error("Erro ao recuperar produtos:", error);
   }
-});
+};
+
+const prevPage = () => {
+  if (page.value > 1) {
+    page.value--;
+    fetchProdutos();
+  }
+};
+
+const nextPage = () => {
+  if (page.value < totalPages.value) {
+    page.value++;
+    fetchProdutos();
+  }
+};
+
+onMounted(fetchProdutos);
 </script>
 
 <style scoped>
@@ -29,8 +54,14 @@ onMounted(async () => {
   margin-top: 8vh;
 }
 
-/* Adicionando estilo para os cards aparecerem lado a lado */
-.card-personagens {
-  flex-basis: 25%; /* Define o tamanho do card em relação à largura da tela */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
 }
 </style>
