@@ -3,11 +3,11 @@
     <div class="card col-lg-4 col-md-6 col-sm-11 p-4 mt-5">
       <div class="mb-3">
         <label for="referencia" class="form-label">Referência</label>
-        <input type="text" class="form-control" id="referencia" v-model="produto.referencia" placeholder="Referência do Produto">
+        <input type="text" class="form-control" id="referencia" v-model="produto.referencia" placeholder="Referência do Produto" maxlength="30">
       </div>
       <div class="mb-3">
         <label for="descricao" class="form-label">Descrição</label>
-        <input type="text" class="form-control" id="descricao" v-model="produto.descricao" placeholder="Descrição do Produto">
+        <input type="text" class="form-control" id="descricao" v-model="produto.descricao" placeholder="Descrição do Produto" maxlength="70">
       </div>
       <div class="mb-3">
         <label for="categoria" class="form-label">Categoria do Produto</label>
@@ -18,7 +18,7 @@
       </div>
       <div class="mb-3">
         <label for="preco" class="form-label">Preço</label>
-        <input type="number" class="form-control" id="preco" v-model="produto.preco" placeholder="Preço do produto">
+        <input v-mask="'#*.##0,00'" type="number" class="form-control" id="preco" v-model="produto.preco" placeholder="Preço do produto">
       </div>
       <div class="mb-3">
         <label for="status" class="form-label">Status do Produto</label>
