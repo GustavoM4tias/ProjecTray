@@ -1,75 +1,105 @@
 <template>
-    <div class="container d-flex align-items-center flex-column">
-        <div class="card col-md-6 col-sm-12 align-items-center">
-            <h3 class="m-3">Importar Produtos</h3>
-            <div class="row">
-                <div class="col">
-                    <input class="form-control m-3" type="file">
-                </div>
-                <div class="col-auto">
-                    <button class="btn btn-success m-3">Enviar</button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 bg-primary d-flex flex-row m-5">
-                <div v-for="(produto, index) in produtos" :key="index" class="card col-lg-3 col-md-12 p-3 m-3">
-                    <h3>{{ produto.nome }}</h3>
-                    <p>Valor: R$ {{ produto.valor }}</p>
-                    <p>Apelido: {{ produto.apelido }}</p>
-                    <p>Descrição:</p>
-                    <ul>
-                        <li v-for="(descricao, i) in produto.descricao" :key="i">{{ descricao }}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+  <div class="card col-auto align-items-center p-3">
+    <h3 class="m-3">Importar Produtos</h3>
+    <div class="row">
+      <div class="col">
+        <input class="form-control m-2" type="file" id="csvFileInput" accept=".csv" @change="handleFileSelect">
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-success m-2" @click="showTable" v-if="csvData.length">Mostrar Produtos</button>
+        <!-- Deixar botão sempre a mostra, se os dados forem enviados com sucesso ou não, mostrar um alert ou popup -->
+      </div>
     </div>
-  </template>
-  
-  <script setup>
-  
-  const produtos = [
-    {
-        "nome": "Molecule Man",
-        "valor": 29,
-        "apelido": "Dan Jukes",
-        "descricao": ["Radiation resistance", "Turning tiny", "Radiation blast"]
-    },
-    {
-        "nome": "Madame Uppercut",
-        "valor": 39,
-        "apelido": "Jane Wilson",
-        "descricao": ["Million tonne punch", "Damage resistance", "Superhuman reflexes"
-        ]
-    },
-    {
-        "nome": "Madame Uppercut",
-        "valor": 39,
-        "apelido": "Jane Wilson",
-        "descricao": ["Million tonne punch", "Damage resistance", "Superhuman reflexes"
-        ]
-    },
-    {
-        "nome": "Madame Uppercut",
-        "valor": 39,
-        "apelido": "Jane Wilson",
-        "descricao": ["Million tonne punch", "Damage resistance", "Superhuman reflexes"
-        ]
-    },
-    {
-        "nome": "Madame Uppercut",
-        "valor": 39,
-        "apelido": "Jane Wilson",
-        "descricao": ["Million tonne punch", "Damage resistance", "Superhuman reflexes"
-        ]
-    },
-    {
-        "nome": "Madame Uppercut",
-        "valor": 39,
-        "apelido": "Jane Wilson",
-        "descricao": ["Million tonne punch", "Damage resistance", "Superhuman reflexes"
-        ]
-    },
-  ];
-  </script>
+  </div>
+
+  <!-- Tabela de produtos -->
+  <div class="row m-3" v-if="showCsvTable">
+    <div class="col-12">
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th v-for="header in csvDataHeaders" :key="header">{{ header }}</th>
+              <th>URL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(row, index) in csvData" :key="index">
+              <td v-for="(value, key) in row" :key="key">
+                <input class="form-control" v-model="row[key]">
+              </td>
+              <td>
+                <input class="form-control" v-model="urls[index]">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const csvData = ref([]);
+const csvDataHeaders = ref([]);
+const urls = ref([]);
+const showCsvTable = ref(false);
+
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+    const csv = event.target.result;
+    const parsedData = parseCSV(csv);
+    csvDataHeaders.value = Object.keys(parsedData[0]);
+    csvData.value = parsedData;
+    // Inicializar o array de URLs com o mesmo comprimento que os dados CSV
+    urls.value = Array(parsedData.length).fill('');
+  };
+
+  reader.readAsText(file);
+}
+
+function parseCSV(csv) {
+  const lines = csv.split('\n');
+  const headers = lines[0].split(',');
+  const data = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+
+    const values = line.split(',');
+    const obj = {};
+
+    for (let j = 0; j < headers.length; j++) {
+      obj[headers[j].trim()] = values[j] ? values[j].trim() : null;
+    }
+
+    data.push(obj);
+  }
+
+  return data;
+}
+
+function showTable() {
+  showCsvTable.value = true;
+}
+</script>
+
+<style scoped>
+.card-header {
+  background-color: #bbb;
+}
+
+.table-container {
+  max-height: 400px; /* Defina a altura máxima que deseja que a tabela tenha antes do scroll */
+  width: 60rem;
+  overflow-y: auto; /* Adiciona scroll vertical à tabela quando o conteúdo ultrapassar a altura máxima */
+}
+</style>
