@@ -19,7 +19,7 @@ import CardProdutos from '../components/CardProdutos.vue';
 
 const produtos = ref([]);
 const page = ref(1);
-const limit = ref(10); // Limite de itens por página
+const limit = ref(12); // Limite de itens por página
 const totalPages = ref(1);
 
 const fetchProdutos = async () => {
