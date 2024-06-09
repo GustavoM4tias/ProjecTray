@@ -7,6 +7,7 @@
       </div>
       <div class="col-auto">
         <button class="btn btn-success m-2" @click="showTable" v-if="csvData.length">Mostrar Produtos</button>
+        <button class="btn btn-primary m-2" @click="saveImportedProducts" v-if="csvData.length">Salvar Produtos</button>
         <!-- Deixar botão sempre a mostra, se os dados forem enviados com sucesso ou não, mostrar um alert ou popup -->
       </div>
     </div>
@@ -89,6 +90,11 @@ function parseCSV(csv) {
 
 function showTable() {
   showCsvTable.value = true;
+}
+
+function saveImportedProducts() {
+  // Lógica para salvar os produtos importados
+  console.log('Produtos importados salvos:', csvData.value);
 }
 </script>
 
