@@ -8,9 +8,13 @@
       <div class="col-auto">
         <button class="btn btn-success m-2" @click="showTable" v-if="csvData.length">Mostrar Produtos</button>
         <button class="btn btn-primary m-2" @click="saveImportedProducts" v-if="csvData.length">Salvar Produtos</button>
-        <!-- Deixar botão sempre a mostra, se os dados forem enviados com sucesso ou não, mostrar um alert ou popup -->
       </div>
     </div>
+  </div>
+
+  <!-- Alertas -->
+  <div v-if="alertMessage" class="alert" :class="alertClass">
+    {{ alertMessage }}
   </div>
 
   <!-- Tabela de produtos -->
@@ -37,11 +41,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import ProdutoService from '@/services/ProdutoService';
 
 const csvData = ref([]);
-const csvDataHeaders = ref([]);
+const csvDataHeaders = ref(["ref", "des", "catego", "preco", "status", "image"]);
 const showCsvTable = ref(false);
+const alertMessage = ref(null);
 
 function handleFileSelect(event) {
   const file = event.target.files[0];
@@ -52,8 +58,10 @@ function handleFileSelect(event) {
   reader.onload = function (event) {
     const csv = event.target.result;
     const parsedData = parseCSV(csv);
-    csvDataHeaders.value = Object.keys(parsedData[0]);
     csvData.value = parsedData;
+
+    // Log de depuração para verificar os dados lidos do CSV
+    console.log('Dados lidos do CSV:', csvData.value);
   };
 
   reader.readAsText(file);
@@ -61,7 +69,6 @@ function handleFileSelect(event) {
 
 function parseCSV(csv) {
   const lines = csv.split('\n');
-  const headers = lines[0].split(',');
   const data = [];
 
   for (let i = 1; i < lines.length; i++) {
@@ -69,11 +76,14 @@ function parseCSV(csv) {
     if (!line) continue;
 
     const values = line.split(',');
-    const obj = {};
-
-    for (let j = 0; j < headers.length; j++) {
-      obj[headers[j].trim()] = values[j] ? values[j].trim() : null;
-    }
+    const obj = {
+      referencia: values[0] ? values[0].trim() : '',
+      descricao: values[1] ? values[1].trim() : '',
+      categoria: values[2] ? values[2].trim() : '',
+      preco: values[3] ? parseFloat(values[3].trim()) : 0,
+      status: values[4] ? values[4].trim().toLowerCase() === 'true' : false,
+      image: values[5] ? values[5].trim() : ''
+    };
 
     data.push(obj);
   }
@@ -85,10 +95,38 @@ function showTable() {
   showCsvTable.value = true;
 }
 
-function saveImportedProducts() {
-  // Lógica para salvar os produtos importados
-  console.log('Produtos importados salvos:', csvData.value);
+async function saveImportedProducts() {
+  alertMessage.value = null;
+
+  for (let produto of csvData.value) {
+    // Log de depuração para verificar os dados do produto antes de enviar
+    console.log('Produto a ser enviado:', produto);
+
+    // Verifique se todos os campos obrigatórios estão presentes
+    if (!produto.referencia || !produto.descricao || !produto.categoria || !produto.image) {
+      alertMessage.value = 'Dados incompletos em um ou mais produtos. Verifique e tente novamente.';
+      return;
+    }
+
+    try {
+      const response = await ProdutoService.create(produto);
+
+      // Log de depuração para verificar a resposta da API
+      console.log('Resposta da API:', response);
+    } catch (error) {
+      console.error('Erro ao salvar produto:', produto, error);
+      alertMessage.value = `Erro ao salvar alguns produtos. Verifique os dados e tente novamente.`;
+      return;
+    }
+  }
+
+  alertMessage.value = "Produtos importados salvos com sucesso!";
+  showCsvTable.value = false;
 }
+
+const alertClass = computed(() => {
+  return alertMessage.value && alertMessage.value.includes('sucesso') ? 'alert success' : 'alert error';
+});
 </script>
 
 <style scoped>
@@ -96,24 +134,36 @@ function saveImportedProducts() {
   background-color: #bbb;
 }
 
-th{
+th {
   background-color: #bbb;
   border: 1px black solid;
 }
 
-tbody{
-  border:1px black solid;
+tbody {
+  border: 1px black solid;
 }
 
-td{
-  border-left:1px black solid ;
+td {
+  border-left: 1px black solid;
   border-bottom: transparent;
 }
 
-
 .table-container {
-  max-height: 450px; /* Defina a altura máxima que deseja que a tabela tenha antes do scroll */
+  max-height: 450px;
   width: 70rem;
-  overflow-y: auto; /* Adiciona scroll vertical à tabela quando o conteúdo ultrapassar a altura máxima */
+  overflow-y: auto;
+}
+
+.alert {
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.alert.success {
+  color: green;
+}
+
+.alert.error {
+  color: red;
 }
 </style>

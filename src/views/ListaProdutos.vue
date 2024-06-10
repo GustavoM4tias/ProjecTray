@@ -2,12 +2,19 @@
   <div class="lista-produtos container-fluid d-flex justify-content-center align-items-center flex-column">
     <div class="row col-lg-11 col-md-12">
       <h4 class="text-center mt-3">Lista de Produtos da sua loja</h4>
-      <CardProdutos v-for="produto in produtos" :key="produto.id" :produto="produto" :exibirBotoes="true" />
+      <CardProdutos
+        v-for="produto in produtos"
+        :key="produto.id"
+        :produto="produto"
+        :exibirBotoes="true"
+        @produtoEditado="handleProductChange"
+        @produtoExcluido="handleProductChange"
+      />
     </div>
     <div class="pagination-controls">
-      <button @click="prevPage" :disabled="page === 1">Anterior</button>
+      <button class="btn btn-dark" @click="prevPage" :disabled="page === 1">Anterior</button>
       <span>Página {{ page }} de {{ totalPages }}</span>
-      <button @click="nextPage" :disabled="page === totalPages">Próxima</button>
+      <button class="btn btn-dark" @click="nextPage" :disabled="page === totalPages">Próxima</button>
     </div>
   </div>
 </template>
@@ -44,6 +51,11 @@ const nextPage = () => {
     page.value++;
     fetchProdutos();
   }
+};
+
+// Manipulador para os eventos edit e delete
+const handleProductChange = () => {
+  fetchProdutos(); // Recarrega a lista de produtos
 };
 
 onMounted(fetchProdutos);

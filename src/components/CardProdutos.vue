@@ -24,7 +24,7 @@
             <input type="text" class="form-control" id="descricaoEdit" v-model="produtoEditado.descricao" placeholder="Descrição do Produto">
           </div>
           <label for="Categoria">Categorias</label>
-          <select class="form-select" id="categoria" v-model="produto.categoria">
+          <select class="form-select" id="categoria" v-model="produtoEditado.categoria">
             <option selected disabled>Selecione uma categoria</option>
             <option v-for="(categoria, index) in categorias" :key="index">{{ categoria.nome }}</option>
           </select>
@@ -69,7 +69,8 @@ export default {
   data() {
     return {
       produtoEditado: { ...this.produto },
-      editando: false
+      editando: false,
+      categorias: []
     };
   },
   computed: {
@@ -79,58 +80,52 @@ export default {
   },
   methods: {
     formatPrice(value) {
-    // Converte para número float
       let number = parseFloat(value);
-
-    // Formata o número com duas casas decimais
       let formattedNumber = number.toFixed(2);
-
-    // Substitui o ponto por vírgula
       return formattedNumber.replace('.', ',');
-      },
-      retrieveCategoria() {
-        CategoriaProdutoService.getAll()
-          .then(response => {
-            this.categorias = response.data;
-          })
-          .catch(e => {
-            console.log(e);
-          });
-      },
-      async excluirProduto() {
-        const confirmacao = confirm(`Tem certeza que deseja excluir o produto "${this.produto.referencia}"?`);
-        if (!confirmacao) return; // Se o usuário cancelar a exclusão, retorna sem fazer nada
+    },
+    retrieveCategoria() {
+      CategoriaProdutoService.getAll()
+        .then(response => {
+          this.categorias = response.data;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    async excluirProduto() {
+      const confirmacao = confirm(`Tem certeza que deseja excluir o produto "${this.produto.referencia}"?`);
+      if (!confirmacao) return;
 
       try {
         await ProdutoService.delete(this.produto.id);
         alert(`Produto "${this.produto.referencia}" excluído com sucesso!`);
-        // Emitir um evento com o nome do produto excluído
-        this.$emit('produtoExcluido', this.produto.referencia);
-        // Recarregar a página após a exclusão
-        this.$router.push('/adicionar');
+        this.$emit('produtoExcluido', this.produto.id); // Emitir evento com o ID do produto excluído
       } catch (error) {
         console.error('Erro ao excluir produto:', error);
       }
-      },
-      editarProduto() {
-        this.editando = true;
-      },
-      cancelarEdicao() {
+    },
+    editarProduto() {
+      this.editando = true;
+    },
+    cancelarEdicao() {
+      this.editando = false;
+      this.produtoEditado = { ...this.produto }; // Resetar as alterações
+    },
+    async salvarEdicao() {
+      try {
+        await ProdutoService.update(this.produto.id, this.produtoEditado);
+        alert(`Produto "${this.produto.referencia}" atualizado com sucesso!`);
         this.editando = false;
-      },
-      async salvarEdicao() {
-        try {
-          await ProdutoService.update(this.produto.id, this.produtoEditado);
-          alert(`Produto "${this.produto.referencia}" atualizado com sucesso!`);
-          this.editando = false;
-          } catch (error) {
-          console.error('Erro ao atualizar produto:', error);
-          }
-        }
-      },
-      mounted() {
-        this.retrieveCategoria();
+        this.$emit('produtoEditado', this.produto.id); // Emitir evento com o ID do produto editado
+      } catch (error) {
+        console.error('Erro ao atualizar produto:', error);
+      }
     }
+  },
+  mounted() {
+    this.retrieveCategoria();
+  }
 }
 </script>
 
