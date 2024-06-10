@@ -106,7 +106,7 @@
   
 </template>
 
-<style>
+<style scoped>
 
 .navbar {
   background-color: rgb(4, 42, 98);
