@@ -103,7 +103,7 @@ async function saveImportedProducts() {
     console.log('Produto a ser enviado:', produto);
 
     // Verifique se todos os campos obrigatórios estão presentes
-    if (!produto.referencia || !produto.descricao || !produto.categoria || !produto.image) {
+    if (!produto.referencia || !produto.descricao || !produto.categoria) {
       alertMessage.value = 'Dados incompletos em um ou mais produtos. Verifique e tente novamente.';
       return;
     }
