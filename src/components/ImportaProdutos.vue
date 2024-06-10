@@ -21,16 +21,12 @@
           <thead>
             <tr>
               <th v-for="header in csvDataHeaders" :key="header">{{ header }}</th>
-              <th>URL</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(row, index) in csvData" :key="index">
               <td v-for="(value, key) in row" :key="key">
                 <input class="form-control" v-model="row[key]">
-              </td>
-              <td>
-                <input class="form-control" v-model="urls[index]">
               </td>
             </tr>
           </tbody>
@@ -45,7 +41,6 @@ import { ref } from 'vue';
 
 const csvData = ref([]);
 const csvDataHeaders = ref([]);
-const urls = ref([]);
 const showCsvTable = ref(false);
 
 function handleFileSelect(event) {
@@ -59,8 +54,6 @@ function handleFileSelect(event) {
     const parsedData = parseCSV(csv);
     csvDataHeaders.value = Object.keys(parsedData[0]);
     csvData.value = parsedData;
-    // Inicializar o array de URLs com o mesmo comprimento que os dados CSV
-    urls.value = Array(parsedData.length).fill('');
   };
 
   reader.readAsText(file);
@@ -103,9 +96,24 @@ function saveImportedProducts() {
   background-color: #bbb;
 }
 
+th{
+  background-color: #bbb;
+  border: 1px black solid;
+}
+
+tbody{
+  border:1px black solid;
+}
+
+td{
+  border-left:1px black solid ;
+  border-bottom: transparent;
+}
+
+
 .table-container {
-  max-height: 400px; /* Defina a altura máxima que deseja que a tabela tenha antes do scroll */
-  width: 60rem;
+  max-height: 450px; /* Defina a altura máxima que deseja que a tabela tenha antes do scroll */
+  width: 70rem;
   overflow-y: auto; /* Adiciona scroll vertical à tabela quando o conteúdo ultrapassar a altura máxima */
 }
 </style>
