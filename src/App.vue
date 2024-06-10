@@ -37,19 +37,19 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link links-menu" href="#">
-                <router-link class="links-menu" to="/perfil"
-                  ><i class="bi bi-person-circle"></i> Perfil</router-link
-                ></a
-              >
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#">
                 <router-link class="links-menu" to="/"
                   ><i class="bi bi-window-fullscreen"></i> Menu
                   Inicial</router-link
                 >
               </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link links-menu" href="#">
+                <router-link class="links-menu" to="/perfil"
+                  ><i class="bi bi-person-circle"></i> Perfil</router-link
+                ></a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link links-menu" href="#">
