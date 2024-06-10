@@ -25,12 +25,16 @@
           <thead>
             <tr>
               <th v-for="header in csvDataHeaders" :key="header">{{ header }}</th>
+              <th>Adicionar Imagem</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(row, index) in csvData" :key="index">
               <td v-for="(value, key) in row" :key="key">
                 <input class="form-control" v-model="row[key]">
+              </td>
+              <td>
+                <input type="file" @change="handleImageSelect($event, index)" accept="image/*">
               </td>
             </tr>
           </tbody>
@@ -45,7 +49,7 @@ import { ref, computed } from 'vue';
 import ProdutoService from '@/services/ProdutoService';
 
 const csvData = ref([]);
-const csvDataHeaders = ref(["ref", "des", "catego", "preco", "status", "image"]);
+const csvDataHeaders = ref(["referencia", "descricao", "categoria", "preco", "status", "image"]);
 const showCsvTable = ref(false);
 const alertMessage = ref(null);
 
@@ -89,6 +93,20 @@ function parseCSV(csv) {
   }
 
   return data;
+}
+
+function handleImageSelect(event, index) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (event) {
+    csvData.value[index].image = event.target.result;
+
+    // Log de depuração para verificar a imagem lida
+    console.log('Imagem lida para o produto:', index, csvData.value[index].image);
+  };
+  reader.readAsDataURL(file);
 }
 
 function showTable() {
