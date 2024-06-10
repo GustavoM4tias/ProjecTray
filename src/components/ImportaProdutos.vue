@@ -25,7 +25,7 @@
           <thead>
             <tr>
               <th v-for="header in csvDataHeaders" :key="header">{{ header }}</th>
-              <th>Adicionar Imagem</th>
+              <th>Arquivo</th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +34,8 @@
                 <input class="form-control" v-model="row[key]">
               </td>
               <td>
-                <input type="file" @change="handleImageSelect($event, index)" accept="image/*">
+                <button class="btn btn-secondary" @click="triggerFileInput(index)">+</button>
+                <input type="file" :id="'fileInput' + index" @change="handleImageSelect($event, index)" accept="image/*" style="display: none;">
               </td>
             </tr>
           </tbody>
@@ -95,6 +96,10 @@ function parseCSV(csv) {
   return data;
 }
 
+function triggerFileInput(index) {
+  document.getElementById('fileInput' + index).click();
+}
+
 function handleImageSelect(event, index) {
   const file = event.target.files[0];
   if (!file) return;
@@ -153,11 +158,13 @@ const alertClass = computed(() => {
 }
 
 th {
+  text-align: center;
   background-color: #bbb;
   border: 1px black solid;
 }
 
 tbody {
+  text-align: center;
   border: 1px black solid;
 }
 
