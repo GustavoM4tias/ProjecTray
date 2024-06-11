@@ -23,7 +23,7 @@
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/50bb2135-d424-464f-bdba-2cd63d2a95f9)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/ab5da9e4-4f9a-4521-b430-a9641b208c91)
 
 ---
 
