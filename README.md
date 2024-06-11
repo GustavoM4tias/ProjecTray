@@ -88,11 +88,11 @@
 
 >-**Arquivo**: ImportarProdutos.vue
 >
->-**Nessa tela é possível o usuário do sistema cadastras os produtos em massa através de um arquivo CSV.**
+>-**Nessa tela é possível o usuário do sistema cadastrar os produtos em massa através de um arquivo CSV.**
 >
 >-**Print da tela**:
 >
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/cc64a7e6-618c-48a7-8b9b-c69df92bee48)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/3102021d-daac-49a4-ae08-c51c18ac67cf)
 ---
 
 ## Tela 10
