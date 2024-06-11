@@ -43,6 +43,10 @@
             <label for="UrlEdit" class="form-label">URL da Imagem</label>
             <input type="text" class="form-control" id="UrlEdit" v-model="produtoEditado.image" placeholder="URL da Imagem do Produto">
           </div>
+          <div class="mb-3">
+            <label for="fileInput" class="form-label">Upload da Imagem</label>
+            <input type="file" class="form-control" id="fileInput" @change="handleImageSelect">
+          </div>
           <button type="submit" class="btn btn-primary">Salvar</button>
           <button type="button" class="btn btn-secondary mx-2" @click="cancelarEdicao">Cancelar</button>
         </form>
@@ -111,6 +115,16 @@ export default {
     cancelarEdicao() {
       this.editando = false;
       this.produtoEditado = { ...this.produto }; // Resetar as alterações
+    },
+    handleImageSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.produtoEditado.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
     },
     async salvarEdicao() {
       try {
