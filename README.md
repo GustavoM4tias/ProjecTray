@@ -29,17 +29,6 @@
 
 ## Tela 04
 
->-**Arquivo**: Perfil.vue
-> 
->-**Nessa tela é possível o usuário do sistema editar dados do seu perfil.**
-> 
->-**Print da tela**:
-> 
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/2ee717b7-ca7c-433f-9cff-783ccd8fc050)
----
-
-## Tela 05
-
 >-**Arquivo**: MenuInicial.vue
 > 
 >-**Esse é o menu inicial da loja virtual.**
@@ -47,6 +36,17 @@
 >-**Print da tela**:
 > 
 >![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/0ea8f2f7-07a7-4ae2-b0c8-fda900cac43b)
+---
+
+## Tela 05
+
+>-**Arquivo**: Perfil.vue
+> 
+>-**Nessa tela é possível o usuário do sistema editar dados do seu perfil.**
+> 
+>-**Print da tela**:
+> 
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/2ee717b7-ca7c-433f-9cff-783ccd8fc050)
 ---
 
 ## Tela 06
