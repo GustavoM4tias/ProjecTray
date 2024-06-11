@@ -28,8 +28,12 @@
         </select>
       </div>
       <div class="mb-3">
-        <label for="imagem" class="form-label">Caminho da Imagem</label>
-        <input type="text" class="form-control" id="imagem" v-model="produto.image" placeholder="URL da imagem do produto">
+        <label for="imagem" class="form-label">URL / Caminho da Imagem</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="imagem" v-model="produto.image" placeholder="URL da imagem do produto">
+          <button class="btn btn-secondary" @click="triggerFileInput">+</button>
+        </div>
+        <input type="file" id="fileInput" @change="handleImageSelect" accept="image/*" style="display: none;">
       </div>
       <button type="submit" class="btn btn-primary" @click="enviarProduto">Enviar</button>
     </div>
@@ -48,7 +52,7 @@ export default {
         referencia: '',
         descricao: '',
         categoria: '',
-        preco: 0,
+        preco: '',
         status: true,
         image: ''
       },
@@ -64,6 +68,19 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    triggerFileInput() {
+      document.getElementById('fileInput').click();
+    },
+    handleImageSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.produto.image = e.target.result;
+      };
+      reader.readAsDataURL(file);
     },
     enviarProduto() {
       ProdutoService.create(this.produto)
@@ -90,3 +107,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+/* Adicione aqui os estilos específicos do seu componente */
+</style>
