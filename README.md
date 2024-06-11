@@ -19,37 +19,15 @@
 
 >-**Arquivo**: index.html
 > 
->-**Nessa tela é possível o usuário do sistema cadastrar as informações básicas de sua nova loja virtual.**
+>-**Nessa tela é possível o usuário cadastrar os dados básicos da sua loja virtual.**
 > 
 >-**Print da tela**:
 > 
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/50bb2135-d424-464f-bdba-2cd63d2a95f9)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/ab5da9e4-4f9a-4521-b430-a9641b208c91)
 
----
-
-## Tela 03
-
->-**Arquivo**: index.html
-> 
->-**Nessa tela é possível o usuário do sistema vincular os métodos de pagamento e entrega para sua loja virtual.**
-> 
->-**Print da tela**:
-> 
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/6495306b-6cad-426b-9d48-b6005c8cff7f)
 ---
 
 ## Tela 04
-
->-**Arquivo**: index.html
-> 
->-**Nessa tela é possível o usuário selecionar o template que deseja aplicar em sua loja virtual.**
-> 
->-**Print da tela**:
-> 
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/e865f23d-8bab-4ead-b06c-0956017d8020)
----
-
-## Tela 05
 
 >-**Arquivo**: Perfil.vue
 > 
@@ -60,7 +38,7 @@
 >![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/2ee717b7-ca7c-433f-9cff-783ccd8fc050)
 ---
 
-## Tela 06
+## Tela 05
 
 >-**Arquivo**: MenuInicial.vue
 > 
@@ -71,7 +49,7 @@
 >![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/0ea8f2f7-07a7-4ae2-b0c8-fda900cac43b)
 ---
 
-## Tela 07
+## Tela 06
 
 >-**Arquivo**: ConfiguracoesLoja.vue
 > 
@@ -82,7 +60,7 @@
 >![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/26f175cb-25e5-4d39-88d0-b2ad029d7612)
 ---
 
-## Tela 08
+## Tela 07
 
 >-**Arquivo**: ListaProdutos.vue
 > 
@@ -94,7 +72,7 @@
 >![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/c78bcdd8-1c4c-427e-aa9d-69a9c7a7c733)
 ---
 
-## Tela 09
+## Tela 08
 
 >-**Arquivo**: AdicionarProdutos.vue
 >
@@ -106,26 +84,26 @@
 >![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/95143646-d7ec-4b7b-bf19-1f51a5d29597)
 ---
 
-## Tela 10
+## Tela 09
 
 >-**Arquivo**: ImportarProdutos.vue
 >
->-**Nessa tela é possível o usuário do sistema cadastras os produtos em massa através de um arquivo CSV.**
+>-**Nessa tela é possível o usuário do sistema cadastrar os produtos em massa através de um arquivo CSV.**
 >
 >-**Print da tela**:
 >
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/cc64a7e6-618c-48a7-8b9b-c69df92bee48)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/3102021d-daac-49a4-ae08-c51c18ac67cf)
 ---
 
-## Tela 11
+## Tela 10
 
 >-**Arquivo**: Template.vue
 >
->-**Nessa tela é possível o usuário do sistema editar/escolher o template da sua loja virtual.**
+>-**Nessa tela é possível o usuário selecionar/editar o template de sua loja virtual.**
 >
 >-**Print da tela**:
 >
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/22be53e1-e54c-455c-aa7b-ca157e4dc19d)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/53d4a432-b85c-4c8b-8017-e6c1908ffddc)
 ---
 
 ---
