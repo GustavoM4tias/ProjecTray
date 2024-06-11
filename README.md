@@ -99,11 +99,11 @@
 
 >-**Arquivo**: Template.vue
 >
->-**Nessa tela é possível o usuário do sistema editar/escolher o template da sua loja virtual.**
+>-**Nessa tela é possível o usuário selecionar/editar o template de sua loja virtual.**
 >
 >-**Print da tela**:
 >
->![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/22be53e1-e54c-455c-aa7b-ca157e4dc19d)
+>![image](https://github.com/GustavoM4tias/ProjecTray/assets/127625388/53d4a432-b85c-4c8b-8017-e6c1908ffddc)
 ---
 
 ---
