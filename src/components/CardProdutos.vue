@@ -10,8 +10,8 @@
         <p class="text-start small status"><strong>Status:</strong> {{ produto.status ? 'Ativo' : 'Inativo' }}</p>
       </div>
       <div class="row botões justify-content-center" v-if="exibirBotoes && !editando">
-        <button class="btn col-auto btn-danger m-1" @click="excluirProduto">Excluir</button>
         <button class="btn col-auto btn-primary m-1" @click="editarProduto">Editar</button>
+        <button class="btn col-auto btn-danger m-1" @click="excluirProduto">Excluir</button>
       </div>
       <div class="row botões justify-content-center" v-if="editando">
         <form class="col-12" @submit.prevent="salvarEdicao">
