@@ -13,43 +13,56 @@
         <button class="btn col-auto btn-primary m-1" @click="editarProduto">Editar</button>
         <button class="btn col-auto btn-danger m-1" @click="excluirProduto">Excluir</button>
       </div>
-      <div class="row botões justify-content-center" v-if="editando">
-        <form class="col-12" @submit.prevent="salvarEdicao">
-          <div class="mb-3">
-            <label for="referenciaEdit" class="form-label">Referência</label>
-            <input type="text" class="form-control" id="referenciaEdit" v-model="produtoEditado.referencia" placeholder="Referência do Produto">
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" :class="{ 'show': editando }">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Produto</h5>
+            <button type="button" class="btn-close" @click="cancelarEdicao"></button>
           </div>
-          <div class="mb-3">
-            <label for="descricaoEdit" class="form-label">Descrição</label>
-            <input type="text" class="form-control" id="descricaoEdit" v-model="produtoEditado.descricao" placeholder="Descrição do Produto">
+          <div class="modal-body">
+            <!-- Formulário de edição -->
+            <form @submit.prevent="salvarEdicao">
+              <div class="mb-3">
+                <label for="referenciaEdit" class="form-label">Referência</label>
+                <input type="text" class="form-control" id="referenciaEdit" v-model="produtoEditado.referencia" placeholder="Referência do Produto">
+              </div>
+              <div class="mb-3">
+                <label for="descricaoEdit" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="descricaoEdit" v-model="produtoEditado.descricao" placeholder="Descrição do Produto">
+              </div>
+              <label for="Categoria">Categorias</label>
+              <select class="form-select" id="categoria" v-model="produtoEditado.categoria">
+                <option selected disabled>Selecione uma categoria</option>
+                <option v-for="(categoria, index) in categorias" :key="index">{{ categoria.nome }}</option>
+              </select>
+              <div class="mb-3">
+                <label for="precoEdit" class="form-label">Preço</label>
+                <input type="number" class="form-control" id="precoEdit" v-model="produtoEditado.preco" placeholder="Preço do produto" step="0.01">
+              </div>
+              <div class="mb-3">
+                <label for="statusEdit" class="form-label">Status do Produto</label>
+                <select class="form-select" id="statusEdit" v-model="produtoEditado.status">
+                  <option :value="true">Ativo</option>
+                  <option :value="false">Inativo</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="UrlEdit" class="form-label">URL da Imagem</label>
+                <input type="text" class="form-control" id="UrlEdit" v-model="produtoEditado.image" placeholder="URL da Imagem do Produto">
+              </div>
+              <div class="mb-3">
+                <label for="fileInput" class="form-label">Upload da Imagem</label>
+                <input type="file" class="form-control" id="fileInput" @change="handleImageSelect">
+              </div>
+              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="button" class="btn btn-secondary mx-2" @click="cancelarEdicao">Cancelar</button>
+            </form>
           </div>
-          <label for="Categoria">Categorias</label>
-          <select class="form-select" id="categoria" v-model="produtoEditado.categoria">
-            <option selected disabled>Selecione uma categoria</option>
-            <option v-for="(categoria, index) in categorias" :key="index">{{ categoria.nome }}</option>
-          </select>
-          <div class="mb-3">
-            <label for="precoEdit" class="form-label">Preço</label>
-            <input type="number" class="form-control" id="precoEdit" v-model="produtoEditado.preco" placeholder="Preço do produto" step="0.01">
-          </div>
-          <div class="mb-3">
-            <label for="statusEdit" class="form-label">Status do Produto</label>
-            <select class="form-select" id="statusEdit" v-model="produtoEditado.status">
-              <option :value="true">Ativo</option>
-              <option :value="false">Inativo</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="UrlEdit" class="form-label">URL da Imagem</label>
-            <input type="text" class="form-control" id="UrlEdit" v-model="produtoEditado.image" placeholder="URL da Imagem do Produto">
-          </div>
-          <div class="mb-3">
-            <label for="fileInput" class="form-label">Upload da Imagem</label>
-            <input type="file" class="form-control" id="fileInput" @change="handleImageSelect">
-          </div>
-          <button type="submit" class="btn btn-primary">Salvar</button>
-          <button type="button" class="btn btn-secondary mx-2" @click="cancelarEdicao">Cancelar</button>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -144,4 +157,36 @@ export default {
 </script>
 
 <style scoped>
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog {
+  position: relative;
+  width: 40rem;
+  height: 90%;
+  margin: auto;
+  background-color: #fff;
+  border: 1px solid #888;
+  border-radius: 10px;
+}
+
+.modal-content {
+  padding: 20px;
+}
 </style>
+

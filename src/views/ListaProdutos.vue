@@ -36,6 +36,7 @@ const fetchProdutos = async () => {
     totalPages.value = Math.ceil(response.data.total / limit.value);
   } catch (error) {
     console.error("Erro ao recuperar produtos:", error);
+
   }
 };
 
