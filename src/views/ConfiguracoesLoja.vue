@@ -1,59 +1,61 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue';
+import MetodosEntregaService from '../services/MetodosEntregaService';
+import MetodoPagamentoService from '../services/MetodoPagamentoService';
+import CategoriaProdutoService from '../services/CategoriaProdutoService';
+import ObjetivoLojaService from '../services/ObjetivoLojaService';
 
-const bloqueado = ref(false)
-
+const bloqueado = ref(false);
+const metodosEntrega = ref([]);
+const categoriasProduto = ref([]);
+const objetivosLoja = ref([]);
+const metodosPagamento = ref([]);
 
 const editar = () => {
-  bloqueado.value = true
-}
+  bloqueado.value = true;
+};
 
 const salvar = () => {
   if (confirm('Tem certeza que deseja salvar?')) {
-    bloqueado.value = false
+    bloqueado.value = false;
   }
-}
+};
 
 const cancelar = () => {
   if (confirm('Tem certeza que deseja cancelar?')) {
-    bloqueado.value = false
+    bloqueado.value = false;
   }
-}
+};
+
+onMounted(async () => {
+  try {
+    objetivosLoja.value = (await ObjetivoLojaService.getAll()).data;
+    categoriasProduto.value = (await CategoriaProdutoService.getAll()).data;
+    metodosPagamento.value = (await MetodoPagamentoService.getAll()).data;
+    metodosEntrega.value = (await MetodosEntregaService.getAll()).data;
+  } catch (error) {
+    console.error('Erro ao buscar dados:', error);
+  }
+});
 </script>
 
 <template>
   <div class="container d-flex justify-content-center align-items-center vh-100 flex-column">
     <div class="card p-4 col-lg-6 col-md-8 col-sm-10">
-      <h3 class="text-center">Configuraçoes da loja</h3>
+      <h3 class="text-center">Configurações da loja</h3>
       <div class="highlight-container">
         <label for="objetivo">Qual seu objetivo como loja virtual?</label>
         <select :disabled="!bloqueado" class="form-select form-control" id="objetivo">
           <option value=""></option>
-          <option value="1">Dropshipping</option>
-          <option value="2" selected>Marketplace</option>
-          <option value="3">Expandir minha loja</option>
-          <option value="4">Outro</option>
-        </select> <!-- AJUSTAR OPTIONS PARA CELULAR -->
+          <option v-for="objetivo in objetivosLoja" :key="objetivo.id" :value="objetivo.id">{{ objetivo.nome }}</option>
+        </select>
       </div>
 
       <div class="form-group mt-3">
         <label for="categoriaVenda">Categorias de Venda:</label>
         <select :disabled="!bloqueado" class="form-control" id="categoriaVenda">
           <option value>Selecionar Categoria</option>
-          <option value="Eletrodomésticos">Eletrodomésticos</option>
-          <option value="Nutrição">Nutrição</option>
-          <option value="Eletrônicos">Eletrônicos</option>
-          <option value="Moda">Moda</option>
-          <option value="Beleza e Cuidados Pessoais">
-            Cuidados Pessoais
-          </option>
-          <option value="Livros e Mídia">Livros e Mídia</option>
-          <option value="Casa e Jardim">Casa e Jardim</option>
-          <option value="Esportes e Lazer">Esportes</option>
-          <option value="Automotivo">Automotivo</option>
-          <option value="Brinquedos e Jogos">Brinquedos</option>
-          <option value="Alimentos e Bebidas">Alimentos</option>
-          <option value="Tecnologia">Tecnologia</option>
+          <option v-for="categoria in categoriasProduto" :key="categoria.id" :value="categoria.id">{{ categoria.nome }}</option>
         </select>
       </div>
 
@@ -63,21 +65,13 @@ const cancelar = () => {
         </div>
       </div>
 
-
-
       <label class="mt-2" for="categoriaPagamento">Métodos de Pagamento:</label>
-      <select :disabled="!bloqueado" class="form-control" id="categoriaPagamento" onchange="adicionarOpcaoCarteira()">
-        <option value>Carteira</option>
-        <option value="Vindi">Vindi</option>
-        <option value="PayPal">PayPal</option>
-        <option value="Mercado Pago">Mercado Pago</option>
-        <option value="Pix">Pix</option>
-        <option value="Cartao">Cartão</option>
-        <option value="Boleto">Boleto</option>
+      <select :disabled="!bloqueado" class="form-control" id="categoriaPagamento">
+        <option value="">Selecionar Método de Pagamento</option>
+        <option v-for="metodo in metodosPagamento" :key="metodo.id" :value="metodo.id">{{ metodo.nome }}</option>
       </select>
 
       <div :disabled="!bloqueado" id="opcoesSelecionadas"></div>
-
 
       <label class="mt-2" for="frete">Metodos de Entrega:</label>
       <div class="btn-group col-12" id="frete">
@@ -92,7 +86,6 @@ const cancelar = () => {
         <input :disabled="!bloqueado" type="checkbox" class="btn-check" id="option5" />
         <label class="btn btn-default" for="option5">Retirada</label>
       </div>
-
 
       <div class="col-auto mt-4">
         <button v-if="!bloqueado" @click="editar" class="btn btn-primary">Editar</button>
